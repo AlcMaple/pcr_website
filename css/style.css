@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'pcr';
+    src: url(../sources/font/TTQinYuanJ-W3.ttf);
+}
+
+@font-face {
+    font-family: 'cygames';
+    src: url(../sources/font/Mont-Bold.ttf);
+}
+
+/* 样式设计 */
+body {
+    font-family: 'Arial', sans-serif;
+    display: grid;
+    /* 定义网格布局 */
+    place-items: center;
+    /* 水平垂直居中 */
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    cursor: default;
+}
+
+.box {
+    position: relative;
+}
+
+/* 游戏界面 */
+#game {
+    position: relative;
+    border: 1px solid #000;
+    width: 1200px;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 加载 */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+
+    & .firing {
+        animation: fontGradient 0.8s linear infinite;
+        position: relative;
+        /* display: none; */
+
+        & img {
+            float: left;
+        }
+
+        & span {
+            font-family: 'cygames';
+            font-size: 120px;
+        }
+    }
+}
+
+#loading {
+    font-family: 'pcr';
+    background: linear-gradient(to bottom, rgb(244, 245, 247), rgb(154, 162, 175));
+    color: transparent;
+    background-clip: text;
+    display: none;
+    position: absolute;
+    bottom: 25px;
+    right: 60px;
+}
+
+#connecting {
+    font-family: 'pcr';
+    background: linear-gradient(to bottom, rgb(244, 245, 247), rgb(154, 162, 175));
+    color: transparent;
+    background-clip: text;
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.firing2 {
+    display: flex;
+    visibility:hidden;
+    flex-direction: column;
+    position: absolute;
+    width: 1200px;
+    top: 0;
+    left: 0;
+    text-align: center;
+
+    & .firing2-top {
+        height: 290px;
+        display: flex;
+        /* 按列布局 */
+        flex-direction: column;
+        /* 水平居中 */
+        align-items: center;
+
+        & img:nth-child(3) {
+            /* 这行会使图片靠右对齐 */
+            margin-left: 1070px;
+        }
+    }
+
+    & .firing2-bottom {
+        height: 175px;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 10px;
+
+        & .firing2-left {
+            width: 245px;
+            height: 54px;
+            display: flex;
+            margin-left: 10px;
+            align-items: flex-end;
+
+            & span {
+                display: flex;
+                background: url(../sources/img/bg.png) no-repeat;
+                background-size: contain;
+                width: 90px;
+                font-size: 20px;
+                align-items: center;
+                justify-content: center;
+                height: 45px;
+            }
+
+            & img {
+                margin-left: 10px;
+                margin-bottom: 3px;
+            }
+        }
+
+        & .firing2-mid {
+            width: 695px;
+
+            & p:nth-child(1) {
+                animation: fontGradient 0.8s linear infinite;
+                font-size: 33px;
+                margin: 10px;
+            }
+        }
+
+        & .firing2-right {
+            display: flex;
+            flex-direction: column;
+            width: 240px;
+            text-align: right;
+
+        }
+    }
+}
+
+/* 文字渐变色动画 */
+@keyframes fontGradient {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.15;
+    }
+}
+
+video {
+    width: 100%;
+    object-fit: none;
+    object-position: left top;
+}
